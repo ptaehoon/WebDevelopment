@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Calculator </title>
+    <meta charset="utf-8"> <!-- I always add this always -->
+
+    <script type = "text/javascript">
+      var finalAnswer;
+      var firstVariable;
+      var secondVariable;
+      var plusone;
+      var minusone;
+      var multione;
+      var divione;
+
+      function Result() {
+        firstVariable = Number(document.getElementById("first").value);
+        secondVariable = Number(document.getElementById("second").value);
+        plusone = document.getElementById("plus");
+        minusone = document.getElementById("minus");
+        multione = document.getElementById("multi");
+        divione = document.getElementById("divi");
+
+        if(plusone.checked) {
+         finalAnswer = firstVariable + secondVariable;
+         document.getElementById("finalAnswer").value = finalAnswer;
+      }
+
+        else if(minusone.checked){
+        finalAnswer = firstVariable - secondVariable;
+        document.getElementById("finalAnswer").value = finalAnswer;
+      }
+
+        else if(multione.checked){
+        finalAnswer = firstVariable * secondVariable;
+        document.getElementById("finalAnswer").value = finalAnswer;
+      }
+
+        else if(divione.checked){
+        if(secondVariable == 0) {
+          document.getElementById("finalAnswer").textContent = "NaN";
+        }
+        else {
+        finalAnswer = firstVariable / secondVariable;
+        document.getElementById("finalAnswer").value = finalAnswer;
+          }
+        }
+
+      }
+
+    </script>
+                          <!-- What getElementById does is that it gets the ID value and stores to new variable-->
+    </head>
+
+
+    <body>
+
+
+      <p>Insert your number down</p>
+      <form name= "calculator">
+        Enter your 1st Number Here Please:<br>
+
+
+        <input id = "first" type="text" value="1"> <!-- here "id" is important in javascript -->
+        <br>
+        Enter your 2nd Number Here Please:<br>
+        <input id = "second" type="text" value="2"> <!-- here "id" is important in javascript -->
+        <br><br>
+
+        <input type="radio" name="calculation" name = "calculation" value="addition" id ="plus"> Addition<br>
+        <input type="radio" name="calculation" name = "calculation" value="subtraction" id ="minus"> Subtraction<br>
+        <input type="radio" name="calculation" name = "calculation" value="multiplication" id ="multi"> Multiplication<br>
+        <input type="radio" name="calculation" name = "calculation" value="division" id = "divi"> Division<br><br>
+      <!--  <input name = "submit" type = "button" value = "Enter" id -->
+
+        <output id ="finalAnswer"></output>
+      </form>
+
+      <script>
+        document.getElementById("first").addEventListener("keyup", Result, false);
+        document.getElementById("second").addEventListener("keyup", Result, false);
+        document.getElementById("plus").addEventListener("click", Result, false);
+        document.getElementById("minus").addEventListener("click", Result, false);
+        document.getElementById("multi").addEventListener("click", Result, false);
+        document.getElementById("divi").addEventListener("click", Result, false);
+      </script>
+
+
+
+    </body>
+  </html>

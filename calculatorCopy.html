@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Calculator </title>
+    <meta charset = "utf-8">
+
+    <script type = "text/javascript">
+      var finalAnswer;
+      var firstVariable;
+      var secondVariable;
+      var plusone;
+      var minusone;
+      var multione;
+      var divione;
+
+      function Result() {
+        firstVariable = Number(document.getElementById("first").value);
+        secondVariable = Number(document.getElementById("second").value);
+        plusone = document.getElementById("plus");
+        minusone = document.getElementById("minus");
+        multione = document.getElementById("multi");
+        divione = document.getElementById("divi");
+
+        if(plusone.checked){
+          finalAnswer = firstVariable + secondVariable;
+          document.getElementById("finalAnswer").value = finalAnswer;
+        }
+
+        else if(minusone.checked){
+          finalAnswer = firstVariable - secondVariable;
+          document.getElementById("finalAnswer").value = finalAnswer;
+        }
+
+        else if(multione.checked){
+          finalAnswer = firstVariable * secondVariable;
+          document.getElementById("finalAnswer").value = finalAnswer;
+        }
+
+        else if(divione.checked){
+          if(secondVariable == 0){
+            document.getElementById("finalAnswer").textContent = "NaN";
+          }else{
+            finalAnswer = firstVariable / secondVariable;
+            document.getElementById("finalAnswer").value = finalAnswer;
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <p> Insert your number down </p>
+
+    <form name = "calculator">
+      Enter your 1st Number Here Please: <br>
+
+      <input id = "first" type = "text" value = "1">
+      <br>
+      Enter your 2nd Number Here Please: <br>
+      <input id = "second" type = "text" value = "2">
+      <br><br>
+
+      <input id = "plus" type = "radio" name = "calculation"> Addition <br>
+      <input id = "minus" type = "radio" name = "calculation"> Subtraction <br>
+      <input id = "multi" type = "radio" name = "calculation"> Multiplication <br>
+      <input id = "divi" type = "radio" name = "calculation"> Division <br>
+
+      <br>
+      <output id = "finalAnswer"></output>
+    </form>
+
+    <script>
+      document.getElementById("first").addEventListener("keyup", Result);
+      document.getElementById("second").addEventListener("keyup", Result);
+      document.getElementById("plus").addEventListener("click", Result);
+      document.getElementById("minus").addEventListener("click", Result);
+      document.getElementById("multi").addEventListener("click", Result);
+      document.getElementById("divi").addEventListener("click", Result);
+    </script>
+  </body>
+</html>
