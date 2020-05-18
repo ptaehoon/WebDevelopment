@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<title>My First PHP Script</title>
+	<title>File Sharing Website</title>
 
 </head>
 <body>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 	if(!empty($_POST["user"])){
 		$userName = $_POST["user"];
@@ -14,7 +14,8 @@
 			$nameStroage = fgets($h);
 			$nameStroage = trim($nameStroage);
 			if($userName == $nameStroage){
-				header("Location: mainPage.php");
+				$userFileURL = "mainPage.php?name=" . $userName;
+				header("Location: " .$userFileURL);
 				exit();
 			}
 			printf($nameStroage); //"fgets" Returns a line from an open file. 
