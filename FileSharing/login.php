@@ -6,11 +6,6 @@
 
 </head>
 <body>
-
-	<?php
-	echo "\t<p>Hello World!</p>\n";
-	?>
-
 	<div class = "login">
 		<h3> Login for File Sharing </h3>
 		<form name = "input" action = "loginAction.php" method = "post">
