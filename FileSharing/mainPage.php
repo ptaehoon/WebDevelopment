@@ -14,15 +14,16 @@ $_SESSION['username']= $_GET['name'];
 <body>
 
 	<div class = "welcomePage">
-		<h3> Hello </h3>
-		<?php 
-		$temp = $_SESSION["username"];
-			printf("Welcome %s",$temp); 
-		?>
+		<h3>  
+			<?php 
+			$username = $_SESSION["username"];
+				printf("Welcome %s",$username); 
+			?>
+		</h3>
 	</div>
 
 	<div class = "fileDirectory">
-		<p> Upload this File </p>
+		
 		<form enctype = "multipart/form-data" action = "uploader.php" method = "post"> <!-- Sproll Code -->
 			<p> 
 				<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
@@ -32,30 +33,37 @@ $_SESSION['username']= $_GET['name'];
 				<input type = "submit" value = "Upload File" />
 			</p>
 		</form>
-<!--
+
+
 		<p> User File Directory </p>
 		<form name = "input" action = "sendFileAction.php" method = "post">
 
+		<?php
+		
+		$userDirectory = sprintf('/home/petrobang/srv/uploads/%s/', $username);
+        if (is_dir($userDirectory)) {
+        	$myfiles = scandir($userDirectory);
+            foreach ($myfiles as $file => $value) {
+            	if($value != "." && $value != ".."){
+	                $eachFileName = trim($file, $userDirectory); //List only the file name, not the entire directory: Referenced from student's code.
 
-
-
-			<?php
-			/*
-			$userDirectory = sprintf('/home/users/%s/files', $_SESSION['username']);
-            if (is_dir($userDirectory)) {
-	            foreach (glob($userDirectory . '/*.*') as $file) {
-                    $name = trim($file, $userDirectory);
-		            echo '<input type="radio" name="thefile" ';
-		            echo 'value= "' . $file . '">' . $name . ' <br>' . "\n";
-	            }
+	                //The reason why I have . and .. is because of current (.) and parent (..) directories. They are present in all directories and are used to refer to the dictionary itself and its direct parent.
+		            echo '<input type="radio" name="eachFile" value= "' . $value . '">' . $value . ' <br>' . "\n";
+	    		}
             }
-            */
-        	?>
-
-			<input type = "submit" value = "viewFile" name = fileUsage/>
-			<input type = "submit" value = "deleteFile" name = fileUsage/>
+        }
+        
+    	?>
+    		<br>
+			<input type = "submit" value = "viewFile" name = "fileUsage"/>
+			<input type = "submit" value = "deleteFile" name = "fileUsage"/>
 		</form>
-	-->
+	</div>
+	<br>
+	<div class = "logout">
+		<form name = "logout" action = "logout.php" method = "post">
+			<input type = "submit" value = "Log Out this User"/>
+		</form>
 	</div>
 
 

@@ -18,9 +18,10 @@ session_start();
 				header("Location: " .$userFileURL);
 				exit();
 			}
-			printf($nameStroage); //"fgets" Returns a line from an open file. 
 		}
 		fclose($h);
+		header("Location: login.php");
+		exit();
 	}else{
 		header("Location: login.php");
 	}

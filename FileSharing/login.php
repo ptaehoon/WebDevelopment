@@ -15,7 +15,7 @@
 		<h3> Login for File Sharing </h3>
 		<form name = "input" action = "loginAction.php" method = "post">
 			Username: <input type = "text" name = "user"/>
-			<input type = "submit" value = "Submit" />
+			<input type = "submit" value = "Login" />
 		</form>
 			
 
@@ -27,6 +27,13 @@
 			<input type = "text" name = "password" id = "password"/>
 			<input type = "button" value = "Login" id = "submit" onclick = "validate()"/>
 		</form> -->
+	</div>
+
+	<br><br>
+	<div class = "addUser">
+		<form name = "addUser" action = "addUser.php" method = "post">
+			<input type = "submit" value = "Add User"/>
+		</form>
 	</div>
 
 </body>
